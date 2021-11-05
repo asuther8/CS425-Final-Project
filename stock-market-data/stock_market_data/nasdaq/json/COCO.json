@@ -1,0 +1,104 @@
+{
+    "chart": {
+        "result": [
+            {
+                "meta": {
+                    "currency": "USD",
+                    "symbol": "COCO",
+                    "exchangeName": "NMS",
+                    "instrumentType": "EQUITY",
+                    "firstTradeDate": 1634823000,
+                    "regularMarketTime": 1635278403,
+                    "gmtoffset": -14400,
+                    "timezone": "EDT",
+                    "exchangeTimezoneName": "America/New_York",
+                    "regularMarketPrice": 13.77,
+                    "chartPreviousClose": 13.52,
+                    "priceHint": 2,
+                    "currentTradingPeriod": {
+                        "pre": {
+                            "timezone": "EDT",
+                            "start": 1635235200,
+                            "end": 1635255000,
+                            "gmtoffset": -14400
+                        },
+                        "regular": {
+                            "timezone": "EDT",
+                            "start": 1635255000,
+                            "end": 1635278400,
+                            "gmtoffset": -14400
+                        },
+                        "post": {
+                            "timezone": "EDT",
+                            "start": 1635278400,
+                            "end": 1635292800,
+                            "gmtoffset": -14400
+                        }
+                    },
+                    "dataGranularity": "1d",
+                    "range": "",
+                    "validRanges": [
+                        "1d",
+                        "5d",
+                        "1mo",
+                        "ytd",
+                        "max"
+                    ]
+                },
+                "timestamp": [
+                    1634823000,
+                    1634909400,
+                    1635168600,
+                    1635278403
+                ],
+                "indicators": {
+                    "quote": [
+                        {
+                            "close": [
+                                13.520000457763672,
+                                13.949999809265137,
+                                13.630000114440918,
+                                13.770000457763672
+                            ],
+                            "open": [
+                                15.369999885559082,
+                                13.989999771118164,
+                                13.760000228881836,
+                                13.5
+                            ],
+                            "volume": [
+                                9664503,
+                                1878329,
+                                1287964,
+                                646207
+                            ],
+                            "low": [
+                                13.520000457763672,
+                                13.789999961853027,
+                                13.25,
+                                13.444999694824219
+                            ],
+                            "high": [
+                                16.520000457763672,
+                                14.649999618530273,
+                                13.899999618530273,
+                                14.09000015258789
+                            ]
+                        }
+                    ],
+                    "adjclose": [
+                        {
+                            "adjclose": [
+                                13.520000457763672,
+                                13.949999809265137,
+                                13.630000114440918,
+                                13.770000457763672
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "error": null
+    }
+}

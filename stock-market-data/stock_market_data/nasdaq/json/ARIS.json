@@ -1,0 +1,96 @@
+{
+    "chart": {
+        "result": [
+            {
+                "meta": {
+                    "currency": "USD",
+                    "symbol": "ARIS",
+                    "exchangeName": "NYQ",
+                    "instrumentType": "EQUITY",
+                    "firstTradeDate": 1634909400,
+                    "regularMarketTime": 1635278402,
+                    "gmtoffset": -14400,
+                    "timezone": "EDT",
+                    "exchangeTimezoneName": "America/New_York",
+                    "regularMarketPrice": 13.59,
+                    "chartPreviousClose": 14.3,
+                    "priceHint": 2,
+                    "currentTradingPeriod": {
+                        "pre": {
+                            "timezone": "EDT",
+                            "start": 1635235200,
+                            "end": 1635255000,
+                            "gmtoffset": -14400
+                        },
+                        "regular": {
+                            "timezone": "EDT",
+                            "start": 1635255000,
+                            "end": 1635278400,
+                            "gmtoffset": -14400
+                        },
+                        "post": {
+                            "timezone": "EDT",
+                            "start": 1635278400,
+                            "end": 1635292800,
+                            "gmtoffset": -14400
+                        }
+                    },
+                    "dataGranularity": "1d",
+                    "range": "",
+                    "validRanges": [
+                        "1d",
+                        "5d",
+                        "ytd",
+                        "max"
+                    ]
+                },
+                "timestamp": [
+                    1634909400,
+                    1635168600,
+                    1635278402
+                ],
+                "indicators": {
+                    "quote": [
+                        {
+                            "low": [
+                                13.670000076293945,
+                                13.010000228881836,
+                                13.0
+                            ],
+                            "close": [
+                                14.300000190734863,
+                                13.569999694824219,
+                                13.59000015258789
+                            ],
+                            "open": [
+                                15.850000381469727,
+                                14.800000190734863,
+                                13.420000076293945
+                            ],
+                            "high": [
+                                15.890000343322754,
+                                14.800000190734863,
+                                14.09000015258789
+                            ],
+                            "volume": [
+                                4278600,
+                                833200,
+                                716303
+                            ]
+                        }
+                    ],
+                    "adjclose": [
+                        {
+                            "adjclose": [
+                                14.300000190734863,
+                                13.569999694824219,
+                                13.59000015258789
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "error": null
+    }
+}

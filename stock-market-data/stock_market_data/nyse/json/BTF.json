@@ -1,0 +1,96 @@
+{
+    "chart": {
+        "result": [
+            {
+                "meta": {
+                    "currency": "USD",
+                    "symbol": "BTF",
+                    "exchangeName": "NGM",
+                    "instrumentType": "ETF",
+                    "firstTradeDate": 1634909400,
+                    "regularMarketTime": 1635278403,
+                    "gmtoffset": -14400,
+                    "timezone": "EDT",
+                    "exchangeTimezoneName": "America/New_York",
+                    "regularMarketPrice": 24.64,
+                    "chartPreviousClose": 24.3,
+                    "priceHint": 2,
+                    "currentTradingPeriod": {
+                        "pre": {
+                            "timezone": "EDT",
+                            "start": 1635235200,
+                            "end": 1635255000,
+                            "gmtoffset": -14400
+                        },
+                        "regular": {
+                            "timezone": "EDT",
+                            "start": 1635255000,
+                            "end": 1635278400,
+                            "gmtoffset": -14400
+                        },
+                        "post": {
+                            "timezone": "EDT",
+                            "start": 1635278400,
+                            "end": 1635292800,
+                            "gmtoffset": -14400
+                        }
+                    },
+                    "dataGranularity": "1d",
+                    "range": "",
+                    "validRanges": [
+                        "1d",
+                        "5d",
+                        "ytd",
+                        "max"
+                    ]
+                },
+                "timestamp": [
+                    1634909400,
+                    1635168600,
+                    1635278403
+                ],
+                "indicators": {
+                    "quote": [
+                        {
+                            "close": [
+                                24.299999237060547,
+                                24.950000762939453,
+                                24.639999389648438
+                            ],
+                            "open": [
+                                25.5,
+                                25.15999984741211,
+                                24.835399627685547
+                            ],
+                            "high": [
+                                25.5,
+                                25.389999389648438,
+                                24.979999542236328
+                            ],
+                            "low": [
+                                23.93000030517578,
+                                24.913999557495117,
+                                24.579999923706055
+                            ],
+                            "volume": [
+                                3191500,
+                                1267200,
+                                1255262
+                            ]
+                        }
+                    ],
+                    "adjclose": [
+                        {
+                            "adjclose": [
+                                24.299999237060547,
+                                24.950000762939453,
+                                24.639999389648438
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "error": null
+    }
+}

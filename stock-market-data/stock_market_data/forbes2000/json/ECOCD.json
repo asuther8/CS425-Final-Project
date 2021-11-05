@@ -1,0 +1,62 @@
+{
+    "chart": {
+        "result": [
+            {
+                "meta": {
+                    "currency": null,
+                    "symbol": "ECOCD",
+                    "exchangeName": "YHD",
+                    "instrumentType": "MUTUALFUND",
+                    "firstTradeDate": null,
+                    "regularMarketTime": 1561759658,
+                    "gmtoffset": -14400,
+                    "timezone": "EDT",
+                    "exchangeTimezoneName": "America/New_York",
+                    "priceHint": 2,
+                    "currentTradingPeriod": {
+                        "pre": {
+                            "timezone": "EDT",
+                            "start": 1635235200,
+                            "end": 1635255000,
+                            "gmtoffset": -14400
+                        },
+                        "regular": {
+                            "timezone": "EDT",
+                            "start": 1635255000,
+                            "end": 1635278400,
+                            "gmtoffset": -14400
+                        },
+                        "post": {
+                            "timezone": "EDT",
+                            "start": 1635278400,
+                            "end": 1635292800,
+                            "gmtoffset": -14400
+                        }
+                    },
+                    "dataGranularity": "1d",
+                    "range": "",
+                    "validRanges": [
+                        "1mo",
+                        "3mo",
+                        "6mo",
+                        "ytd",
+                        "1y",
+                        "2y",
+                        "5y",
+                        "10y",
+                        "max"
+                    ]
+                },
+                "indicators": {
+                    "quote": [
+                        {}
+                    ],
+                    "adjclose": [
+                        {}
+                    ]
+                }
+            }
+        ],
+        "error": null
+    }
+}

@@ -1,0 +1,104 @@
+{
+    "chart": {
+        "result": [
+            {
+                "meta": {
+                    "currency": "USD",
+                    "symbol": "PX",
+                    "exchangeName": "NYQ",
+                    "instrumentType": "EQUITY",
+                    "firstTradeDate": 1634823000,
+                    "regularMarketTime": 1635278401,
+                    "gmtoffset": -14400,
+                    "timezone": "EDT",
+                    "exchangeTimezoneName": "America/New_York",
+                    "regularMarketPrice": 12.49,
+                    "chartPreviousClose": 12.08,
+                    "priceHint": 2,
+                    "currentTradingPeriod": {
+                        "pre": {
+                            "timezone": "EDT",
+                            "start": 1635235200,
+                            "end": 1635255000,
+                            "gmtoffset": -14400
+                        },
+                        "regular": {
+                            "timezone": "EDT",
+                            "start": 1635255000,
+                            "end": 1635278400,
+                            "gmtoffset": -14400
+                        },
+                        "post": {
+                            "timezone": "EDT",
+                            "start": 1635278400,
+                            "end": 1635292800,
+                            "gmtoffset": -14400
+                        }
+                    },
+                    "dataGranularity": "1d",
+                    "range": "",
+                    "validRanges": [
+                        "1d",
+                        "5d",
+                        "1mo",
+                        "ytd",
+                        "max"
+                    ]
+                },
+                "timestamp": [
+                    1634823000,
+                    1634909400,
+                    1635168600,
+                    1635278401
+                ],
+                "indicators": {
+                    "quote": [
+                        {
+                            "low": [
+                                11.270000457763672,
+                                11.710000038146973,
+                                12.0,
+                                12.010000228881836
+                            ],
+                            "close": [
+                                12.079999923706055,
+                                12.0,
+                                12.5,
+                                12.489999771118164
+                            ],
+                            "volume": [
+                                6070390,
+                                851660,
+                                1118898,
+                                682191
+                            ],
+                            "high": [
+                                12.699999809265137,
+                                12.100000381469727,
+                                12.6899995803833,
+                                12.670000076293945
+                            ],
+                            "open": [
+                                12.020000457763672,
+                                12.0,
+                                12.010000228881836,
+                                12.5
+                            ]
+                        }
+                    ],
+                    "adjclose": [
+                        {
+                            "adjclose": [
+                                12.079999923706055,
+                                12.0,
+                                12.5,
+                                12.489999771118164
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "error": null
+    }
+}
