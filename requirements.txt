@@ -4,3 +4,11 @@ opendatasets
 pandas
 scikit-learn
 seaborn
+
+"
+username and key to get the most updated datasets
+
+username: anthonysutherland
+key:609037051118a8e60667c79f2159f312
+
+"

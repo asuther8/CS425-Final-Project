@@ -11,12 +11,6 @@ plt.style.use('seaborn-whitegrid')
 import seaborn as sbn
 sbn.set()
 
-# This is how to get the datasets 
-# # # #  # # # # # #  # # # # # #  # # # # # # # #  # # # # # # #  # # # # #
-# pip3 install openddatasets for mac                                       #
-# {"username":"anthonysutherland","key":"609037051118a8e60667c79f2159f312"}#
-# # # # #  # # # # # #  # # # # # # #  # # # # # # # #  # # # # # # #  # # # 
-
 parser = argparse.ArgumentParser(description="Script for estimating stock prices")
 parser.add_argument('--stock'   , default='AMZN', help='stock symbol to predict')
 parser.add_argument('--showfigs', default=False , help='show plots while running' , action='store_true')
