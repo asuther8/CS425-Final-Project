@@ -37,7 +37,6 @@ path_sp500 = 'stock-market-data/stock_market_data/forbes2000/csv/'
 filename = (path_nasdaq + args.stock+'.csv')
 df = pd.read_csv(filename)
 
-
 ################### Data Pre-processing ###################################
 
 print(df.head())
