@@ -8,6 +8,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn import metrics
 
+from sklearn.linear_model import Ridge
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.pipeline import make_pipeline
+
 import matplotlib.pyplot as plt
 plt.style.use('seaborn-whitegrid')
 import seaborn as sbn
@@ -107,6 +111,30 @@ plt.scatter(y_test, y_pred, c='crimson', label='predicted')
 plt.plot([vmin, vmax], [vmin,vmax], 'b-', label='optimal fit')
 plt.xlabel('True Closing Price', fontsize=18)
 plt.ylabel('Predicted Closing Price', fontsize=18)
+plt.title("Predicted Price vs. Actual for Linear Regression")
 plt.legend()
 plt.savefig('closeprice_linear_est_plot.png')
+plt.show() if args.showfigs else plt.clf()
+
+plt.figure().clear()
+
+# Similar to Linear Regression but using Quadratic Regression instead
+quadmodel = make_pipeline(PolynomialFeatures(3), Ridge())
+quadmodel.fit(X_train[:,0].reshape(-1,1), y_train)
+qy_pred = quadmodel.predict(X_test[:,0].reshape(-1,1))
+
+print('Quadratic Regression Abs. Error:', metrics.mean_absolute_error(y_test, qy_pred))
+print('Quadratic R^2 Score: ', metrics.r2_score(y_test, qy_pred))
+
+# Visualize the quadratic model estimates against actual prices
+vmin = int(min(min(y_test), min(qy_pred)))
+vmax = int(max(max(y_test), max(y_test)))
+plt.figure(figsize=(20,10))
+plt.scatter(y_test, qy_pred, c='crimson', label='predicted')
+plt.plot([vmin, vmax], [vmin,vmax], 'b-', label='optimal fit')
+plt.xlabel('True Closing Price', fontsize=18)
+plt.ylabel('Predicted Closing Price', fontsize=18)
+plt.title("Predicted Price vs. Actual for Quadratic Regression")
+plt.legend()
+plt.savefig('closeprice_quadratic_est_plot.png')
 plt.show() if args.showfigs else plt.clf()
