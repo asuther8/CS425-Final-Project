@@ -4,6 +4,7 @@ opendatasets
 pandas
 scikit-learn
 seaborn
+pandas-ta
 
 "
 username and key to get the most updated datasets

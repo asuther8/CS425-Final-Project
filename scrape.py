@@ -1,9 +1,11 @@
 import pandas as pd
+import pandas_ta
 import numpy as np
 import opendatasets as od
 import argparse
 
 from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
 from sklearn import metrics
 
 import matplotlib.pyplot as plt
@@ -56,12 +58,20 @@ plt.ylabel('Adjusted Closing Price', fontsize=18)
 plt.savefig('historic_closeprice_plot.png')
 plt.show() if args.showfigs else plt.clf()
 
+# Add ema (exponential moving average) to plot against close price
+# This is a work-around for linear predictions bc time not a good x var
+group_size = 10 # we can test with different values here for better fit?
+df.ta.ema(close='Adjusted Close', length=group_size, append=True)
+df = df.reindex(columns=(['EMA_10'] + list([a for a in df.columns if a != 'EMA_10']) ))
+df.dropna(subset=["EMA_10"], inplace=True) # move to front -> easier splitting of data later
+print(df.head()) # Verify that new EMA_10 col is at front with no NANs
+
 # Move data to numpy arrays and split into training and testing sets
 df['Date'] = pd.to_datetime(df['Date'])
 v = df.to_numpy()
-X = v[:,0:6] # create X data excluding date and adjusted closing price
-y = v[:,6]   # create y data using adjusted closing price -> target
-X_train, y_train, X_test, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+X = v[:,0:7] # create X data excluding date and adjusted closing price
+y = v[:,7]   # create y data using adjusted closing price -> target
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
 
 ################## Prediction Techniques ##################################
@@ -75,3 +85,28 @@ X_train, y_train, X_test, y_test = train_test_split(X, y, test_size=0.2, random_
 ###        https://www.datacamp.com/community/tutorials/lstm-python-stock-market
 ###        https://www.kaggle.com/razvangeorgecostea/practice-machine-learning-on-apple-stock
 ###        
+
+# Linear Classifier using EMA instead of date
+# This is used to predict the closing price of any day given that day's ema (calculated 
+# using the closing values of the previous 10 days)
+# Link for reference:
+#     https://www.alpharithms.com/predicting-stock-prices-with-linear-regression-214618/
+
+model = LinearRegression()
+model.fit(X_train[:,0].reshape(-1,1), y_train)
+y_pred = model.predict(X_test[:,0].reshape(-1,1))
+
+print('Linear Abs. Error:', metrics.mean_absolute_error(y_test, y_pred))
+print('Linear R^2 Score: ', metrics.r2_score(y_test, y_pred))
+
+# Visualize the linear model estimates against actual prices
+vmin = int(min(min(y_test), min(y_pred)))
+vmax = int(max(max(y_test), max(y_test)))
+plt.figure(figsize=(20,10))
+plt.scatter(y_test, y_pred, c='crimson', label='predicted')
+plt.plot([vmin, vmax], [vmin,vmax], 'b-', label='optimal fit')
+plt.xlabel('True Closing Price', fontsize=18)
+plt.ylabel('Predicted Closing Price', fontsize=18)
+plt.legend()
+plt.savefig('closeprice_linear_est_plot.png')
+plt.show() if args.showfigs else plt.clf()
