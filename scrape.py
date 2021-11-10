@@ -72,9 +72,10 @@ print(df.head()) # Verify that new EMA_10 col is at front with no NANs
 
 # Move data to numpy arrays and split into training and testing sets
 df['Date'] = pd.to_datetime(df['Date'])
+df = df.drop(['Date'], axis=1)
 v = df.to_numpy()
-X = v[:,0:7] # create X data excluding date and adjusted closing price
-y = v[:,7]   # create y data using adjusted closing price -> target
+X = v[:,0:6] # create X data excluding date and adjusted closing price
+y = v[:,6]   # create y data using adjusted closing price -> target
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
 
@@ -120,8 +121,8 @@ plt.figure().clear()
 
 # Similar to Linear Regression but using Quadratic Regression instead
 quadmodel = make_pipeline(PolynomialFeatures(3), Ridge())
-quadmodel.fit(X_train[:,0].reshape(-1,1), y_train)
-qy_pred = quadmodel.predict(X_test[:,0].reshape(-1,1))
+quadmodel.fit(X_train, y_train)
+qy_pred = quadmodel.predict(X_test)
 
 print('Quadratic Regression Abs. Error:', metrics.mean_absolute_error(y_test, qy_pred))
 print('Quadratic R^2 Score: ', metrics.r2_score(y_test, qy_pred))
