@@ -7,6 +7,7 @@ import argparse
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn import metrics
+from sklearn.preprocessing import StandardScaler
 
 from sklearn.linear_model import Ridge
 from sklearn.preprocessing import PolynomialFeatures
@@ -64,19 +65,36 @@ plt.show() if args.showfigs else plt.clf()
 
 # Add ema (exponential moving average) to plot against close price
 # This is a work-around for linear predictions bc time not a good x var
-group_size = 10 # we can test with different values here for better fit?
-df.ta.ema(close='Adjusted Close', length=group_size, append=True)
-df = df.reindex(columns=(['EMA_10'] + list([a for a in df.columns if a != 'EMA_10']) ))
-df.dropna(subset=["EMA_10"], inplace=True) # move to front -> easier splitting of data later
-print(df.head()) # Verify that new EMA_10 col is at front with no NANs
+#group_size = 10 # we can test with different values here for better fit?
+#df.ta.ema(close='Adjusted Close', length=group_size, append=True)
+#df = df.reindex(columns=(['EMA_10'] + list([a for a in df.columns if a != 'EMA_10']) ))
+#df.dropna(subset=["EMA_10"], inplace=True) # move to front -> easier splitting of data later
+#print(df.head()) # Verify that new EMA_10 col is at front with no NANs
 
 # Move data to numpy arrays and split into training and testing sets
-df['Date'] = pd.to_datetime(df['Date'])
-df = df.drop(['Date'], axis=1)
-v = df.to_numpy()
-X = v[:,0:6] # create X data excluding date and adjusted closing price
-y = v[:,6]   # create y data using adjusted closing price -> target
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+#df['Date'] = pd.to_datetime(df['Date'])
+#df = df.drop(['Date'], axis=1)
+#v = df.to_numpy()
+#X = v[:,0:6] # create X data excluding date and adjusted closing price
+#y = v[:,6]   # create y data using adjusted closing price -> target
+
+features = ['Date','Low','Open','Volume','High','Close']
+features_nodate = ['Low','Open','Volume','High','Close']
+target = ['Adjusted Close']
+X = df[features_nodate]
+y = df[target]
+X = df[features_nodate].to_numpy()
+y = df[target].to_numpy()
+
+test_num = len(X)*.8
+X_train, X_test = X[:int(test_num)], X[int(test_num)+1:]
+y_train, y_test = y[:int(test_num)], y[int(test_num)+1:]
+
+sc = StandardScaler()
+X_train = sc.fit_transform(X_train)
+X_test = sc.transform(X_test)
+#X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
 
 
 ################## Prediction Techniques ##################################
@@ -97,9 +115,13 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 # Link for reference:
 #     https://www.alpharithms.com/predicting-stock-prices-with-linear-regression-214618/
 
+#model = LinearRegression()
+#model.fit(X_train[:,0].reshape(-1,1), y_train)
+#y_pred = model.predict(X_test[:,0].reshape(-1,1))
+
 model = LinearRegression()
-model.fit(X_train[:,0].reshape(-1,1), y_train)
-y_pred = model.predict(X_test[:,0].reshape(-1,1))
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
 
 print('Linear Abs. Error:', metrics.mean_absolute_error(y_test, y_pred))
 print('Linear R^2 Score: ', metrics.r2_score(y_test, y_pred))
