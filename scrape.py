@@ -79,7 +79,7 @@ plt.show() if args.showfigs else plt.clf()
 #y = v[:,6]   # create y data using adjusted closing price -> target
 
 features = ['Date','Low','Open','Volume','High','Close']
-features_nodate = ['Low','Open','Volume','High','Close']
+features_nodate = ['Low','Open','Volume','High']
 target = ['Adjusted Close']
 X = df[features_nodate]
 y = df[target]
