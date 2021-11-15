@@ -123,8 +123,8 @@ model = LinearRegression()
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
-print('Linear Abs. Error:', metrics.mean_absolute_error(y_test, y_pred))
-print('Linear R^2 Score: ', metrics.r2_score(y_test, y_pred))
+print(f'Linear Abs. Error: {metrics.mean_absolute_error(y_test, y_pred)}')
+print(f'Linear R^2 Score: {metrics.r2_score(y_test, y_pred)}')
 
 # Visualize the linear model estimates against actual prices
 vmin = int(min(min(y_test), min(y_pred)))
@@ -146,8 +146,8 @@ quadmodel = make_pipeline(PolynomialFeatures(3), Ridge())
 quadmodel.fit(X_train, y_train)
 qy_pred = quadmodel.predict(X_test)
 
-print('Quadratic Regression Abs. Error:', metrics.mean_absolute_error(y_test, qy_pred))
-print('Quadratic R^2 Score: ', metrics.r2_score(y_test, qy_pred))
+print(f'Quadratic Regression Abs. Error: {metrics.mean_absolute_error(y_test, qy_pred)}')
+print(f'Quadratic R^2 Score: {metrics.r2_score(y_test, qy_pred)}')
 
 # Visualize the quadratic model estimates against actual prices
 vmin = int(min(min(y_test), min(qy_pred)))
