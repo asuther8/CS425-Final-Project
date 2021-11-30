@@ -161,3 +161,24 @@ plt.title("Predicted Price vs. Actual for Quadratic Regression")
 plt.legend()
 plt.savefig('closeprice_quadratic_est_plot.png')
 plt.show() if args.showfigs else plt.clf()
+
+
+# Making plots for price predictions on each model - WARNING TAKES TIME
+dates = df["Date"]
+datesA = dates[:int(test_num)]
+datesP = dates[int(test_num)+1:]
+plt.plot_date(datesA,y_train, label = "True Price",linestyle = "-",marker = "None")
+plt.plot_date(datesP,qy_pred, label = "Predicted Price",linestyle = "-", color = "r",marker = "None")
+plt.title("Predicted Closing Prices (Quadratic)")
+plt.ylabel("Closing Prices")
+plt.legend()
+plt.savefig("gradratic_predictions.png")
+plt.show() if args.showfigs else plt.clf()
+
+plt.plot_date(datesA,y_train, label = "True Price",linestyle = "-",marker = "None")
+plt.plot_date(datesP,y_pred, label = "Predicted Price",linestyle = "-", color = "r",marker = "None")
+plt.title("Predicted Closing Prices (Linear)")
+plt.ylabel("Closing Prices")
+plt.legend()
+plt.savefig("linear_predictions.png")
+plt.show() if args.showfigs else plt.clf()
