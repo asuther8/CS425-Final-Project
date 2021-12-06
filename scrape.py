@@ -65,11 +65,11 @@ plt.show() if args.showfigs else plt.clf()
 
 # Add ema (exponential moving average) to plot against close price
 # This is a work-around for linear predictions bc time not a good x var
-#group_size = 10 # we can test with different values here for better fit?
-#df.ta.ema(close='Adjusted Close', length=group_size, append=True)
-#df = df.reindex(columns=(['EMA_10'] + list([a for a in df.columns if a != 'EMA_10']) ))
-#df.dropna(subset=["EMA_10"], inplace=True) # move to front -> easier splitting of data later
-#print(df.head()) # Verify that new EMA_10 col is at front with no NANs
+group_size = 10 # we can test with different values here for better fit?
+df.ta.ema(close='Adjusted Close', length=group_size, append=True)
+df = df.reindex(columns=(['EMA_10'] + list([a for a in df.columns if a != 'EMA_10']) ))
+df.dropna(subset=["EMA_10"], inplace=True) # move to front -> easier splitting of data later
+print(df.head()) # Verify that new EMA_10 col is at front with no NANs
 
 # Move data to numpy arrays and split into training and testing sets
 #df['Date'] = pd.to_datetime(df['Date'])
@@ -78,8 +78,9 @@ plt.show() if args.showfigs else plt.clf()
 #X = v[:,0:6] # create X data excluding date and adjusted closing price
 #y = v[:,6]   # create y data using adjusted closing price -> target
 
-features = ['Date','Low','Open','Volume','High','Close']
-features_nodate = ['Low','Open','Volume','High']
+features = ['EMA_10', 'Date','Low','Open','Volume','High','Close']
+#features_nodate = ['Low','Open','Volume','High']
+features_nodate = ['EMA_10', 'Open']
 target = ['Adjusted Close']
 X = df[features_nodate]
 y = df[target]
