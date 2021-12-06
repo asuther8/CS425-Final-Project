@@ -143,7 +143,7 @@ plt.show() if args.showfigs else plt.clf()
 plt.figure().clear()
 
 # Similar to Linear Regression but using Quadratic Regression instead
-quadmodel = make_pipeline(PolynomialFeatures(3), Ridge())
+quadmodel = make_pipeline(PolynomialFeatures(2), Ridge())
 quadmodel.fit(X_train, y_train)
 qy_pred = quadmodel.predict(X_test)
 
@@ -182,4 +182,11 @@ plt.title("Predicted Closing Prices (Linear)")
 plt.ylabel("Closing Prices")
 plt.legend()
 plt.savefig("linear_predictions.png")
+plt.show() if args.showfigs else plt.clf()
+
+plt.plot_date(dates,y, label = "True Price",linestyle = "-",marker = "None")
+plt.title("Actual Closing Prices")
+plt.ylabel("Closing Prices")
+plt.legend()
+plt.savefig("closing_prices.png")
 plt.show() if args.showfigs else plt.clf()
