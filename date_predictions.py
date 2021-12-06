@@ -70,7 +70,7 @@ def nn_regression(stock, df, X_train, X_test, y_train, y_test, X_every_day_dates
     plt.plot_date(X_every_day_dates, y_pred_every_day, label = "Predicted Adjusted Close", linestyle = "-", marker=None)
     plt.xlabel('Date', fontsize=18)
     plt.ylabel('Adjusted Closing Price', fontsize=18)
-    plt.title("MLP Regression Predicted Adjusted Closing Price vs. Actual")
+    plt.title(stock + ": MLP Regression Predicted Adjusted Closing Price vs. Actual")
     plt.legend()
     ax.xaxis.set_major_locator(years)
     ax.xaxis.set_major_formatter(years_fmt)
